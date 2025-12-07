@@ -62,7 +62,9 @@ const Filters = ({
   ];
 
   const handleSortChange = (e) => {
-    const [field, order] = e.target.value.split("_");
+    const parts = e.target.value.split("_");
+    const order = parts.pop();
+    const field = parts.join("_");
     onSortChange(field, order);
   };
 
