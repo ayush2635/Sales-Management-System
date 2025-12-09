@@ -43,9 +43,15 @@ const SalesTable = ({ sales, loading }) => {
             <tr key={sale.transaction_id}>
               <td className="id-col">{sale.transaction_id}</td>
               <td>{formatDate(sale.tx_date)}</td>
-              <td>{sale.customer_id}</td>
+              <td style={{ fontWeight: 600 }}>{sale.customer_id}</td>
               <td className="name-col">{sale.customer_name}</td>
-              <td>{sale.phone_number}</td>
+              <td>
+                {sale.phone_number}
+                <i
+                  className="bi bi-files"
+                  style={{ color: "#9ca3af", marginLeft: 6, cursor: "pointer" }}
+                ></i>
+              </td>
               <td>{sale.gender}</td>
               <td>{sale.age}</td>
               <td className="category-col">{sale.product_category}</td>

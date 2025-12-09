@@ -75,8 +75,13 @@ const Filters = ({
 
   return (
     <section className="filters-bar">
+      <button className="btn-reset" onClick={onRefresh} title="Reset Filters">
+        <i className="bi bi-arrow-clockwise"></i>
+      </button>
+
       <div className="filter-group">
         <select
+          className="filter-select"
           value={filters.customer_region || ""}
           onChange={(e) => onChange("customer_region", e.target.value)}
         >
@@ -88,6 +93,7 @@ const Filters = ({
           ))}
         </select>
         <select
+          className="filter-select"
           value={filters.gender || ""}
           onChange={(e) => onChange("gender", e.target.value)}
         >
@@ -100,6 +106,7 @@ const Filters = ({
         </select>
 
         <select
+          className="filter-select"
           value={filters.age || ""}
           onChange={(e) => onChange("age", e.target.value)}
         >
@@ -112,6 +119,7 @@ const Filters = ({
         </select>
 
         <select
+          className="filter-select"
           value={filters.product_category || ""}
           onChange={(e) => onChange("product_category", e.target.value)}
         >
@@ -123,6 +131,7 @@ const Filters = ({
           ))}
         </select>
         <select
+          className="filter-select"
           value={filters.tags || ""}
           onChange={(e) => onChange("tags", e.target.value)}
         >
@@ -134,10 +143,14 @@ const Filters = ({
           ))}
         </select>
         <select
+          className="filter-select"
           value={filters.payment_method || ""}
           onChange={(e) => onChange("payment_method", e.target.value)}
         >
           <option value="">Payment Method</option>
+          <option key="" value="">
+            Payment Method
+          </option>
           {options.paymentMethods.map((p) => (
             <option key={p} value={p}>
               {p}
@@ -146,29 +159,25 @@ const Filters = ({
         </select>
         <input
           type="date"
-          className="date-input"
-          placeholder="Select Date"
+          className="filter-select"
+          placeholder="Date"
           value={filters.date || ""}
           onChange={(e) => onChange("date", e.target.value)}
         />
-
-        <select value={getSortValue()} onChange={handleSortChange}>
-          <option value="customer_name_ASC">Sort by: Name (A-Z)</option>
-          <option value="customer_name_DESC">Sort by: Name (Z-A)</option>
-          <option value="tx_date_DESC">Sort by: Date (Newest)</option>
-          <option value="tx_date_ASC">Sort by: Date (Oldest)</option>
-          <option value="total_amount_DESC">Sort by: Amount (H-L)</option>
-          <option value="total_amount_ASC">Sort by: Amount (L-H)</option>
-        </select>
-
-        <button
-          className="refresh-btn"
-          onClick={onRefresh}
-          title="Reset Filters"
-        >
-          <i className="bi bi-arrow-clockwise"></i> Reset
-        </button>
       </div>
+
+      <select
+        className="sort-select"
+        value={getSortValue()}
+        onChange={handleSortChange}
+      >
+        <option value="customer_name_ASC">Sort by: Customer Name (A-Z)</option>
+        <option value="customer_name_DESC">Sort by: Customer Name (Z-A)</option>
+        <option value="tx_date_DESC">Sort by: Date (Newest)</option>
+        <option value="tx_date_ASC">Sort by: Date (Oldest)</option>
+        <option value="total_amount_DESC">Sort by: Amount (H-L)</option>
+        <option value="total_amount_ASC">Sort by: Amount (L-H)</option>
+      </select>
     </section>
   );
 };

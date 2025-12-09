@@ -11,53 +11,40 @@ const MetricsCards = ({ aggregates, totalCount }) => {
 
   return (
     <section className="metrics-row">
-      <div className="metric-card-pill">
-        <span className="metric-label-text">Units Sold:</span>
-        <span className="metric-value-text">
+      <div className="metric-card">
+        <div className="metric-card-header">
+          <span>Total units sold</span>
+          <i className="bi bi-info-circle"></i>
+        </div>
+        <div className="metric-card-value">
           {totalUnits.toLocaleString("en-IN")}
-        </span>
+        </div>
       </div>
 
-      <div className="metric-card-pill">
-        <span className="metric-label-text">Amount:</span>
-        <span className="metric-value-text">
-          ₹
-          {totalAmount.toLocaleString("en-IN", {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-          })}{" "}
-          <span
-            style={{
-              fontWeight: 400,
-              fontSize: "0.85rem",
-              color: "#6b7280",
-              marginLeft: "4px",
-            }}
-          >
+      <div className="metric-card">
+        <div className="metric-card-header">
+          <span>Total Amount</span>
+          <i className="bi bi-info-circle"></i>
+        </div>
+        <div className="metric-card-value">
+          ₹{totalAmount.toLocaleString("en-IN")}
+          <span className="metric-subtext">
             ({(totalCount || 0).toLocaleString()} SRs)
           </span>
-        </span>
+        </div>
       </div>
 
-      <div className="metric-card-pill">
-        <span className="metric-label-text">Discount:</span>
-        <span className="metric-value-text">
-          ₹
-          {totalDiscount.toLocaleString("en-IN", {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-          })}{" "}
-          <span
-            style={{
-              fontWeight: 400,
-              fontSize: "0.85rem",
-              color: "#6b7280",
-              marginLeft: "10px",
-            }}
-          >
+      <div className="metric-card">
+        <div className="metric-card-header">
+          <span>Total Discount</span>
+          <i className="bi bi-info-circle"></i>
+        </div>
+        <div className="metric-card-value">
+          ₹{totalDiscount.toLocaleString("en-IN")}
+          <span className="metric-subtext">
             ({(totalCount || 0).toLocaleString()} SRs)
           </span>
-        </span>
+        </div>
       </div>
     </section>
   );

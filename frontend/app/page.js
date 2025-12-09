@@ -108,26 +108,26 @@ export default function Home() {
   }, [loadSales]);
 
   // Handlers
-  const handleSearch = (term) => {
+  const handleSearch = useCallback((term) => {
     setSearch(term);
     setPage(1);
-  };
+  }, []);
 
-  const handleFilterChange = (key, value) => {
+  const handleFilterChange = useCallback((key, value) => {
     setFilters((prev) => ({ ...prev, [key]: value }));
     setPage(1);
-  };
+  }, []);
 
-  const handleRefresh = () => {
+  const handleRefresh = useCallback(() => {
     setSearch("");
     setFilters({});
     setPage(1);
-  };
+  }, []);
 
-  const handleSortChange = (field, order) => {
+  const handleSortChange = useCallback((field, order) => {
     setSortBy(field);
     setSortOrder(order);
-  };
+  }, []);
 
   return (
     <main className="main-content">

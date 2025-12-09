@@ -44,7 +44,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   }
 
   return (
-    <div className="pagination">
+    <div className="pagination-container">
       <button
         className="page-btn"
         disabled={currentPage === 1}
